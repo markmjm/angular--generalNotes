@@ -1,0 +1,70 @@
+<h1 class="special">Hello World From the HTML File</h1>
+
+<ul>
+  <li *ngFor="let person of people">
+    {{ person }}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let person of people; let i = index">
+    {{ i + 1 }} {{ person }}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let person of people2; let i = index">
+    {{ i + 1 }} {{ person.firstName }} {{ person.lastName }}
+  </li>
+</ul>
+
+<hr>
+<h1>Hello
+<span *ngIf="showName">{{ name }}</span>
+  <span *ngIf="!showName">World</span>
+</h1>
+
+<h1>Hello
+  <span *ngIf="showName; else noName">{{ name }}</span>
+  <ng-template #noName>Universe</ng-template>
+</h1>
+
+    <p class="special">Hello {{ showName ? name  : 'World'}}</p>
+<hr>
+
+<div [ngSwitch]="greeting">
+  <div *ngSwitchCase="'1'">Hello Switch </div>
+  <div *ngSwitchCase="'2'">Hi There </div>
+  <div *ngSwitchCase="'3'">What's Up </div>
+  <div *ngSwitchDefault>Defaulting</div>
+
+</div>
+
+<hr>
+<!-- 3 ways to bind properties -->
+<div><img src="{{ imageUrl }} " alt=""></div>
+<div><img [src]="imageUrl" alt=""></div>
+<div><img bind-src="imageUrl" alt=""></div>
+
+<h4>Image Location:  <span [textContent]="imageUrl"></span> </h4>
+<hr>
+
+<h2>Create Post</h2>
+<p [hidden]="isUnchanged">Post has been changed, please save</p>
+<button [disabled]="isUnchanged">Save</button>
+<hr>
+
+<h4 [class.special]="isSpecial">This class binding is special</h4>
+<h4 [ngClass]="currentClasses">This div is initally special and savable</h4>
+
+<hr>
+<div [style.font-size]="isSpecial ? 'x-large' : 'smaller'">Font size depends on isSpecial</div>
+<hr>
+<div [ngStyle]="currentStyles">This div is styles by current styles </div>
+<hr>
+<h1>My birthday is {{ birthday | date}}</h1>
+<h1>My birthday is {{ birthday | date: "MM-dd-yyyy" }}</h1>
+<h1>I was borth in {{ birthday | date:"yyyy"}}</h1>
+<h1>I love {{ 'cake' | uppercase}}</h1>
+<hr>
+<p>Your total is {{ total | currency:"GBP":"1" }}</p>
+<p>Fee is {{fee | percent}}</p>
+<hr>
